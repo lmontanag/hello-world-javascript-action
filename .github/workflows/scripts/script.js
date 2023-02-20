@@ -7,10 +7,7 @@ module.exports = async ({github, context}) => {
     })
 
     for(const file of commit.data.files) {
-
         console.log("------")
-        console.log(file.name)
-        console.log(file.status)
-
+        console.log(file.filename,"--",file.status)
     }
 }
