@@ -1,3 +1,7 @@
 module.exports = ({github, context}) => {
-    return context.payload.client_payload.value
+    if (typeof context.payload.value !== 'undefined') {
+        return context.payload.value
+    } else {
+        return "undefined"
+    }
 }
