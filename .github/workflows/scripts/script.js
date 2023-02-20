@@ -1,7 +1,16 @@
-module.exports = ({github, context}) => {
-    if (typeof context.payload.value !== 'undefined') {
-        return context.payload.value
-    } else {
-        return "undefined"
+module.exports = async ({github, context}) => {
+
+    const commit = await github.rest.repos.getCommit({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        ref: context.sha
+    })
+
+    for(const file of commit.data.files) {
+
+        console.log("------")
+        console.log(file.name)
+        console.log(file.status)
+
     }
 }
